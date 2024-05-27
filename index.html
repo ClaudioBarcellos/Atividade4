@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade4</title>
+    <style>
+       body{
+          
+            background:rgb(70, 68, 199);
+            color:white;
+            font: normal 18pt Arial;
+            text-align: center; 
+        }
+
+        div#res {
+            font: normal 20pt Arial;
+            background: rgb(7, 237, 245);
+            margin-top: 20px;
+            margin-left: 720px;
+            color: rgb(0, 0, 0);
+            width: 440px;
+            height: 40px;
+            padding-top: 15px;
+            text-align: center; 
+        }
+
+        input, textarea {
+            background: white;
+            border: black;
+	        font-size: 18pt;
+            height: 32px;
+            text-align: center; 
+        } 
+    </style>
+</head>
+<body>
+ 
+
+<h3>Claudio da Silva Barcellos </h3>
+<h3>RGM: 24370185   </h3>
+<h1>Clock Interno do Processador</h1>
+<p> Digite Clock Externo MHz</p>
+<input type="number" name="txtn1" id="txtn1"  > 
+<p> Multiplicador </p>
+<input type="number" name="txtn2" id="txtn2">
+<br><br>
+<input type="button" value="Calcular" onclick="fclock()">
+<div id="res">Resultado</div>
+</div>
+
+</body>
+
+<script>
+    function fclock(){
+    var tn1 = document.getElementById('txtn1')
+    var tn2 = document.getElementById('txtn2')
+    var res= document.getElementById('res')
+    var n1= Number(tn1.value)
+    var n2= Number(tn2.value)
+  
+
+    //Cálculo do Clock Interno
+    var clk= n1 * n2
+    var rdc= clk%10
+    
+    // Verifica a unidade
+    if (clk<1000) {
+        var un= "MHz"
+    }
+    if (clk>=1000) {
+        var un="GHz"
+        clk = clk/1000
+    }
+   
+    // Fixa em duas casas decimais
+    if (rdc>0){
+        rclk=clk.toFixed(2)   
+    }
+    else {
+        rclk=clk
+    }
+
+    // Mostra o resultado
+    var Sclk = String(rclk)
+    var s=Sclk + un
+    res.innerHTML = `Clock Interno = ${s} ` 
+    
+}
+
+
+</script>
